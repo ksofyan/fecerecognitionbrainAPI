@@ -3,11 +3,12 @@ const Clarifai = require('clarifai');
 //You must add your own API key here from Clarifai.
 //it is place in the backend for security measures. Hiding API key externally 
 const app = new Clarifai.App({
- apiKey: '42307a17a53f42b7883c3f4d068d207d'
+ apiKey: '4a78fc7f10d54855baf0418c0d1c04d9'
 });
 
 const handleApiCall = (req, res) => {
-	app.models.predict(Clarifai.FACE_DETECT_MODEL, req.body.input)
+	app.models
+	.predict(Clarifai.FACE_DETECT_MODEL, req.body.input)
 	.then(data => {
 		res.json(data);
 	})
