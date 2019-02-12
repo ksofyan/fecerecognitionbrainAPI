@@ -1,20 +1,18 @@
 const Clarifai = require('clarifai');
 
 //You must add your own API key here from Clarifai.
-//it is place in the backend for security measures. Hiding API key externally 
 const app = new Clarifai.App({
  apiKey: '4a78fc7f10d54855baf0418c0d1c04d9'
 });
 
 const handleApiCall = (req, res) => {
-	app.models
-	.predict(Clarifai.FACE_DETECT_MODEL, req.body.input)
-	.then(data => {
-		res.json(data);
-	})
-	.catch(err => res.status(400).json('unable to work with apinp'))
+  app.models
+    .predict(Clarifai.FACE_DETECT_MODEL, req.body.input)
+    .then(data => {
+      res.json(data);
+    })
+    .catch(err => res.status(400).json('unable to work with API'))
 }
-
 
 const handleImage = (req, res, db) => {
 	const {id} = req.body;
